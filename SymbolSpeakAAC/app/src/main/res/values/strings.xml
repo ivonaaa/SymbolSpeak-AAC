@@ -1,3 +1,69 @@
 <resources>
     <string name="app_name">SymbolSpeak-AAC</string>
+    <string name="whatIsAAC">What is AAC?</string>
+    <string name="typesOfAAC">Types of AAC</string>
+    <string name="peopleWhoNeedAAC">Who is AAC for?</string>
+    <string name="defineAAC">Augmentative and alternative communication
+        (AAC) is a discipline that studies the ways of communication
+        for people with limitations in standard ways of communication such
+        as speech.</string>
+    <string name="defineTypesOfAac">With technological progress, the assistive
+        technologies used in the field of AAK are undergoing major changes.
+        Devices are becoming smaller, more sophisticated and easier to use.
+        Advances in the field of mobile technologies allow users to choose
+        the device they want to use and enable the use of AAK technology for
+        people who have not yet been recommended to use it. It is very important
+        to adjust the selection of the technique to the cognitive and physical
+        capabilities of the person, regardless of the type of technique used.
+        Each of the non-tech, low-tech, mid-tech and high-tech techniques are
+        adapted to certain groups of users and their different requirements, so
+        that each person can find a technique that corresponds to specific
+        cognitive and physical abilities. Non-tech techniques are usually used
+        with some mid-tech or high-tech technique, and complement each other.
+        This technique includes nodding, waving hands, shaking hands, pointing
+        with body parts such as a finger, and more. The symbol that will indicate
+        a certain body movement is agreed upon between the user and the partner
+        who serves as a communication assistant. Low-tech AAK refers to methods
+        that are not electronic, but unlike non-tech require some equipment that
+        is not part of the body. Low-tech methods are useful because of their
+        availability in all moments in which the user can be found in which the
+        electronic device is not available, but also because of their availability
+        to users who only use AAK temporarily. Mid-tech and high-tech devices
+        mainly refer to speech generating devices. Mid-tech devices are electronic
+        devices that use batteries and generally have simple functions. High-tech
+        devices have more advanced functions than mid-tech devices, such as allowing
+        the user to independently define sentences, search the Internet or send
+        messages. Such devices have a large number of pages and symbols that the
+        user can choose from. High-tech devices can be adapted to various groups
+        of users by adjusting the button press time, and the selection can be made
+        using the eye or head tracking method, as well as many others.</string>
+    <string name="definePeopleWhoNeedAAC">A number of conditions that benefit from
+        AAK include Alzheimer\'s disease, Parkinson\'s disease, Down syndrome, autism,
+        learning disabilities, developmental disabilities, stroke, cerebral palsy,
+        head and brain injuries, amyotrophic lateral sclerosis (ALS), and others.
+        In disorders such as dementia and Alzheimer\'s disease, and in head and brain
+        injuries, the need for AAK systems appears as a secondary consequence of the
+        disorder that causes it. In this group of disorders, there is a wide range
+        of difficulties, among which is the inability to determine the meaning of
+        words, finding the word that one wants to use, remembering, determining the
+        correct answer and following instructions. In this group, help in the form
+        of speech therapy occurs more often, and AAK is suggested when speech cannot
+        meet daily needs. In a progressive disease such as amyotrophic lateral
+        sclerosis, the loss of speech can be gradual or very rapid. Due to the
+        impossibility of estimating when speech loss will occur, it is often
+        overlooked, and it is important to prioritize the decision regarding
+        future plans for communication as the disease progresses. The AAK system
+        should be chosen according to the possible limitations that the progress
+        of the disease will bring. With the loss of the ability to speak in stroke,
+        damage to the vocal cords, and chronic diseases such as Parkinson\'s disease,
+        it is assumed that the person knows what they want to say, but cannot say or
+        formulate it. In such cases, AAK enables recovery and communication when the
+        ability to speak is lost, so that the person is not isolated or feels lonely.
+        Developmental disabilities, learning disabilities, Down syndrome and autism
+        are disorders that appear at birth and develop throughout childhood. When
+        learning how to use the AAK system, users with the mentioned difficulties
+        require a communication partner who shows by their own example how to use
+        the system, and through the use of the system they require help in the
+        decision process in order to successfully express their decision through
+        the use of the system.</string>
 </resources>

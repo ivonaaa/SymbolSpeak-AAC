@@ -10,6 +10,8 @@ import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Info
 import androidx.compose.material.icons.filled.Settings
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -111,19 +113,6 @@ fun HomeScreen(
         Text("Home Screen", fontSize = 40.sp)
         Text(text = "Screen with all symbols and functionalities")
         println("Home Screen")
-    }
-}
-
-@Composable
-fun InfoScreen(
-) {
-
-    Column (
-        modifier = Modifier.fillMaxWidth(),
-        horizontalAlignment = Alignment.CenterHorizontally) {
-        Text("Info Screen", fontSize = 40.sp)
-        Text(text = "Screen with What is AAC?, Types of AAC and Who uses AAC?")
-        println("Info Screen")
     }
 }
 
