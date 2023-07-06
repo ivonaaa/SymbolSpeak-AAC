@@ -12,6 +12,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.symbolspeak_aac.Navigation.MenuItem
 
 @Composable
 fun DrawerHeader() {

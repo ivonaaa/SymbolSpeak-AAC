@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "671855308485",
+    "project_id": "symbolspeak-aac",
+    "storage_bucket": "symbolspeak-aac.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:671855308485:android:1f690577fc954a1d038aac",
+        "android_client_info": {
+          "package_name": "com.example.symbolspeak_aac"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "671855308485-4s06almmcja989btdtdr62024keqtb39.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyASbEZsEZ5oEHJ9Jl2D87Sy0P_BPYFLD_g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "671855308485-4s06almmcja989btdtdr62024keqtb39.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
