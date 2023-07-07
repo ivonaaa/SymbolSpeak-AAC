@@ -37,10 +37,14 @@ suspend fun getDataFromFirebase(): DataOrException<List<Symbol>, Exception> {
 
     val dataOrException = DataOrException<List<Symbol>, Exception>()
     try {
-        dataOrException.data = FirebaseFirestore.getInstance().collection("symbols")
-            .get().await().map { document ->
-            document.toObject(Symbol::class.java)
-        }
+        dataOrException.data = FirebaseFirestore
+            .getInstance()
+            .collection("symbols")
+            .get()
+            .await()
+            .map { document ->
+                document.toObject(Symbol::class.java)
+            }
     } catch (e: FirebaseFirestoreException) {
         dataOrException.e = e
     }

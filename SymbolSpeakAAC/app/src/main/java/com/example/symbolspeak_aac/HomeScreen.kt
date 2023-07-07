@@ -34,7 +34,7 @@ fun HomeScreen(
                 Card(
                     modifier = Modifier.padding(4.dp)
                         .fillMaxWidth(),
-                    border = BorderStroke(2.dp,Color.LightGray),
+                    border = BorderStroke(2.dp, Color.LightGray),
                 ) {
                     Column(
                         modifier = Modifier.padding(1.dp),
@@ -52,6 +52,7 @@ fun HomeScreen(
                                 .fillMaxWidth()
                         )
                     }
+                }
             }
         }
     }
@@ -62,6 +63,4 @@ fun HomeScreen(
             text = e.message!!
         )
     }
-
-}
 }
