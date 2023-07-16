@@ -4,6 +4,7 @@ import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.symbolspeak_aac.Firebase.DataOrException
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.FirebaseFirestoreException
 import kotlinx.coroutines.launch
@@ -27,11 +28,6 @@ class DataViewModel: ViewModel() {
         }
     }
 }
-
-data class DataOrException<T, E : Exception?>(
-    var data: T? = null,
-    var e: E? = null
-)
 
 suspend fun getDataFromFirebase(): DataOrException<List<Symbol>, Exception> {
 
