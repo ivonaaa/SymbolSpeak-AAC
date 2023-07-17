@@ -1,13 +1,18 @@
 package com.example.symbolspeak_aac
 
 import androidx.compose.foundation.ExperimentalFoundationApi
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.GridCells
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.LazyVerticalGrid
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.Button
+import androidx.compose.material.Icon
 import androidx.compose.material.Text
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Delete
+import androidx.compose.material.icons.filled.Menu
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
@@ -23,24 +28,40 @@ fun HomeScreen(
     val products = dataViewModel.state.value.data
 
     Column {
-        Row(modifier = Modifier 
-            .padding(5.dp)
-        ){
+        Row(
+            modifier = Modifier
+                .padding(5.dp)
+        ) {
             Text(text = "search feature by symbol.title")
         }
-        Row {
+        Row(
+            modifier = Modifier
+                .height(100.dp)
+                .fillMaxWidth()
+        ) {
             LazyRow(
                 modifier = Modifier
                     .padding(5.dp)
+                    .fillMaxWidth(0.8f)
             )
             {
                 items(chosenSymbols.chosen) { chosen ->
                     SymbolView(product = chosen, chosenSymbols)
                 }
             }
-
-            Button(onClick = { chosenSymbols.deleteLast()}) {
-                Text(text = "Delete")
+            Column() {
+                Button(
+                    onClick = { chosenSymbols.deleteLast() },
+                    modifier = Modifier
+                        .padding(5.dp)
+                        .fillMaxWidth(1f)
+                        .fillMaxHeight(1f)
+                ) {
+                    Icon(
+                        imageVector = Icons.Default.Delete,
+                        contentDescription = "Toggle drawer"
+                    )
+                }
             }
         }
         products?.let {

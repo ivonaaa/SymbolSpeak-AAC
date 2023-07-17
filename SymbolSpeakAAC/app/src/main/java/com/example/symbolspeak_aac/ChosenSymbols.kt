@@ -13,6 +13,8 @@ class ChosenSymbols: ViewModel() {
     }
 
     fun deleteLast(){
-        chosen.remove(chosen.last())
+        if(chosen.size > 0) {
+            chosen.remove(chosen.last())
+        }
     }
 }
