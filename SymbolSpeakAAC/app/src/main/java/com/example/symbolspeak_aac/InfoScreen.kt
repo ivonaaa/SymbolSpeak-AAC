@@ -1,123 +1,139 @@
 package com.example.symbolspeak_aac
 
-import androidx.compose.foundation.background
-import androidx.compose.foundation.border
+import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.foundation.verticalScroll
-import androidx.compose.material.Switch
-import androidx.compose.material.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
+import androidx.compose.material.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.SolidColor
-import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
+import androidx.compose.ui.unit.*
+import androidx.compose.ui.window.Popup
+import com.example.symbolspeak_aac.InfoScreenFiles.PeopleWhoNeedAACScreen
+import com.example.symbolspeak_aac.InfoScreenFiles.TypesOfAACScreen
+import com.example.symbolspeak_aac.InfoScreenFiles.WhatIsAACScreen
+import com.example.symbolspeak_aac.InfoScreenFiles.WindowCenterOffsetPositionProvider
 
 @Composable
 fun InfoScreen(
 ) {
-    val checked1 = remember { mutableStateOf(false) }
-    val checked2 = remember { mutableStateOf(false) }
-    val checked3 = remember { mutableStateOf(false) }
-    Column (
-        modifier = Modifier
-            .fillMaxWidth()
-            .verticalScroll(rememberScrollState()),
-        horizontalAlignment = Alignment.CenterHorizontally) {
-        Text("Info Screen", fontSize = 40.sp)
-        Row(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(16.dp),
-            verticalAlignment = Alignment.CenterVertically
-        ) {
-            Text(text = stringResource(id = R.string.whatIsAAC))
-            Switch(
-                checked = checked1.value,
-                onCheckedChange = { checked1.value = it },
-            )
-        }
-        if (checked1.value) {
-            WhatIsAACScreen()
-        }
-        Row(
-            modifier = Modifier
-                .fillMaxWidth(1f)
-                .padding(16.dp),
-            verticalAlignment = Alignment.CenterVertically
-        ) {
-            Text(text = stringResource(id = R.string.typesOfAAC))
-            Switch(
-                checked = checked2.value,
-                onCheckedChange = { checked2.value = it },
-            )
-        }
-        if (checked2.value) {
-            TypesOfAACScreen()
-        }
-        Row(
-            modifier = Modifier
-                .fillMaxWidth(1f)
-                .padding(16.dp),
-            verticalAlignment = Alignment.CenterVertically
-        ) {
-            Text(text = stringResource(id = R.string.peopleWhoNeedAAC))
-            Switch(
-                checked = checked3.value,
-                onCheckedChange = { checked3.value = it },
-            )
-        }
-        if (checked3.value) {
-            PeopleWhoNeedAACScreen()
-        }
-    }
-}
+    var checked1 by remember { mutableStateOf(false) }
+    var checked2 by remember { mutableStateOf(false) }
+    var checked3 by remember { mutableStateOf(false) }
 
-@Composable
-fun WhatIsAACScreen() {
-    Column(
-        modifier = Modifier
-            .padding(horizontal = 16.dp)
-            .background(Color(0xFAFAFA), shape = RoundedCornerShape(15.dp))
-            .border(2.dp, SolidColor(Color.Gray), shape = RoundedCornerShape(15.dp))
-            .padding(16.dp)
-    ) {
-        Text(text = stringResource(id = R.string.whatIsAAC))
-        Text(text = stringResource(id = R.string.defineAAC))
+    Column {
+            TextButton(
+                onClick = { checked1 = true }
+            ) {
+                Text("What is AAC?")
+            }
 
-    }
-}
+            if (checked1) {
+                Popup(
+                    popupPositionProvider =
+                    WindowCenterOffsetPositionProvider(),
+                    onDismissRequest = { checked1 = false },
+                ) {
+                    Surface(
+                        modifier = Modifier
+                            .fillMaxSize(1f),
+                        border = BorderStroke(1.dp, MaterialTheme.colors.secondary),
+                        shape = RoundedCornerShape(0.dp),
+                        color = Color.White.copy(alpha = 1.0f),
+                    ) {
+                        Column(
+                            modifier = Modifier.padding(1.dp)
+                        ) {
+                            // Composable content to be shown in the Popup
+                            Row {
+                                TextButton(onClick = { checked1 = false }) {
+                                    Icon(
+                                        imageVector = Icons.Default.ArrowBack,
+                                        contentDescription = "Back"
+                                    )
+                                    Text(text = "Back")
+                                }
+                            }
+                            WhatIsAACScreen()
+                        }
+                    }
+                }
+            }
 
-@Composable
-fun TypesOfAACScreen() {
-    Column(
-        modifier = Modifier
-            .padding(horizontal = 16.dp)
-            .background(Color(0xFAFAFA), shape = RoundedCornerShape(15.dp))
-            .border(2.dp, SolidColor(Color.Gray), shape = RoundedCornerShape(15.dp))
-            .padding(16.dp)
-    ) {
-        Text(text = stringResource(id = R.string.typesOfAAC))
-        Text(text = stringResource(id = R.string.defineTypesOfAac))
-    }
-}
 
-@Composable
-fun PeopleWhoNeedAACScreen() {
-    Column(
-        modifier = Modifier
-            .padding(horizontal = 16.dp)
-            .background(Color(0xFAFAFA), shape = RoundedCornerShape(15.dp))
-            .border(2.dp, SolidColor(Color.Gray), shape = RoundedCornerShape(15.dp))
-            .padding(16.dp)
-    ) {
-        Text(text = stringResource(id = R.string.peopleWhoNeedAAC))
-        Text(text = stringResource(id = R.string.definePeopleWhoNeedAAC))
+            TextButton(onClick = { checked2 = true }) {
+                Text("People who need AAC")
+            }
+
+            if (checked2) {
+                Popup(
+                    popupPositionProvider =
+                    WindowCenterOffsetPositionProvider(),
+                    onDismissRequest = { checked2 = false },
+                ) {
+                    Surface(
+                        modifier = Modifier
+                            .fillMaxSize(1f),
+                        border = BorderStroke(1.dp, MaterialTheme.colors.secondary),
+                        shape = RoundedCornerShape(0.dp),
+                        color = Color.White.copy(alpha = 1.0f),
+                    ) {
+                        Column(
+                            modifier = Modifier.padding(1.dp)
+                        ) {
+                            // Composable content to be shown in the Popup
+                            Row {
+                                TextButton(onClick = { checked2 = false }) {
+                                    Icon(
+                                        imageVector = Icons.Default.ArrowBack,
+                                        contentDescription = "Back"
+                                    )
+                                    Text(text = "Back")
+                                }
+                            }
+                            PeopleWhoNeedAACScreen()
+                        }
+                    }
+                }
+            }
+
+        TextButton(onClick = { checked3 = true }) {
+            Text("Types of AAC")
+        }
+
+        if (checked3) {
+            Popup(
+                popupPositionProvider =
+                WindowCenterOffsetPositionProvider(),
+                onDismissRequest = { checked3 = false },
+            ) {
+                Surface(
+                    modifier = Modifier
+                        .fillMaxSize(1f),
+                    border = BorderStroke(1.dp, MaterialTheme.colors.secondary),
+                    shape = RoundedCornerShape(0.dp),
+                    color = Color.White.copy(alpha = 1.0f),
+                ) {
+                    Column(
+                        modifier = Modifier.padding(1.dp)
+                    ) {
+                        // Composable content to be shown in the Popup
+                        Row {
+                            TextButton(onClick = { checked3 = false }) {
+                                Icon(
+                                    imageVector = Icons.Default.ArrowBack,
+                                    contentDescription = "Back"
+                                )
+                                Text(text = "Back")
+                            }
+                        }
+                        TypesOfAACScreen()
+                    }
+                }
+            }
+        }
     }
 }
