@@ -17,4 +17,8 @@ class ChosenSymbols: ViewModel() {
             chosen.remove(chosen.last())
         }
     }
+
+    fun delete(item: Symbol) {
+        chosen.remove(item)
+    }
 }
