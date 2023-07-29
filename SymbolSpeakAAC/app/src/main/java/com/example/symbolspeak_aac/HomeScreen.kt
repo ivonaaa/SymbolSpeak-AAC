@@ -2,9 +2,9 @@ package com.example.symbolspeak_aac
 
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.lazy.GridCells
 import androidx.compose.foundation.lazy.LazyRow
-import androidx.compose.foundation.lazy.LazyVerticalGrid
+import androidx.compose.foundation.lazy.grid.GridCells
+import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.Button
 import androidx.compose.material.Icon
@@ -27,13 +27,6 @@ fun HomeScreen(
     val products = dataViewModel.state.value.data
 
     Column {
-        Row(
-            modifier = Modifier
-                .padding(5.dp)
-        ) {
-            Text(text = "search feature by symbol.title")
-        }
-
         textToSpeechView()
 
         Row(
@@ -68,12 +61,12 @@ fun HomeScreen(
         }
         products?.let {
             LazyVerticalGrid(
-                cells = GridCells.Fixed(4),
+                columns = GridCells.Fixed(3),
                 contentPadding = PaddingValues(8.dp)
             ) {
-                items(products) { product ->
-                    SymbolView(product = product, chosenSymbols)
-                }
+                items(products.size, itemContent = {
+                    SymbolView(product = products[it], chosenSymbols)
+                })
             }
         }
 
