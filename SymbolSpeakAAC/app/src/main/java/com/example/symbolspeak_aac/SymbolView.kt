@@ -18,7 +18,7 @@ fun SymbolView(
 ) {
     Card(
         modifier = Modifier
-            .padding(2.dp)
+            .padding(3.dp)
             .fillMaxWidth(),
         border = BorderStroke(2.dp, Color.LightGray),
     ) {
