@@ -64,7 +64,7 @@ fun InfoScreen(
                                         imageVector = Icons.Default.ArrowBack,
                                         contentDescription = "Back"
                                     )
-                                    Text(text = "Back")
+                                    Text(text = "Back", fontSize = 20.sp)
                                 }
                             }
                             WhatIsAACScreen()
@@ -101,7 +101,7 @@ fun InfoScreen(
                                         imageVector = Icons.Default.ArrowBack,
                                         contentDescription = "Back"
                                     )
-                                    Text(text = "Back")
+                                    Text(text = "Back", fontSize = 20.sp)
                                 }
                             }
                             PeopleWhoNeedAACScreen()
@@ -137,7 +137,7 @@ fun InfoScreen(
                                         imageVector = Icons.Default.ArrowBack,
                                         contentDescription = "Back"
                                     )
-                                    Text(text = "Back")
+                                    Text(text = "Back", fontSize = 20.sp)
                                 }
                             }
                             TypesOfAACScreen()
