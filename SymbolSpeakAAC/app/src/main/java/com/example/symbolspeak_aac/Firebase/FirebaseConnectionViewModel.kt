@@ -7,6 +7,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.symbolspeak_aac.Firebase.DataOrException
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.FirebaseFirestoreException
+import com.google.firebase.firestore.Query
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.tasks.await
 
@@ -36,6 +37,7 @@ suspend fun getDataFromFirebase(): DataOrException<List<Symbol>, Exception> {
         dataOrException.data = FirebaseFirestore
             .getInstance()
             .collection("symbols")
+            .orderBy("type", Query.Direction.ASCENDING)
             .get()
             .await()
             .map { document ->
