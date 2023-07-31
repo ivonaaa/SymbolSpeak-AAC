@@ -5,6 +5,7 @@ import android.content.Context
 import android.speech.tts.TextToSpeech
 import androidx.compose.runtime.State
 import androidx.lifecycle.ViewModel
+import com.example.symbolspeak_aac.Symbol
 import java.util.*
 
 class TextToSpeechViewModel : ViewModel() {
@@ -13,7 +14,11 @@ class TextToSpeechViewModel : ViewModel() {
     private  var  textToSpeech:TextToSpeech? = null
 
 
-    fun onTextFieldValueChange(text:String){
+    fun onTextFieldValueChange(symbols:kotlin.collections.List<Symbol>){
+        var text = ""
+        symbols.forEach {
+            text += it.title
+        }
         _state.value = state.value.copy(
             text = text
         )

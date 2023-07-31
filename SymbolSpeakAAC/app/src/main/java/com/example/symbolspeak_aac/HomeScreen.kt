@@ -1,6 +1,6 @@
 package com.example.symbolspeak_aac
 
-import androidx.compose.foundation.ExperimentalFoundationApi
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.grid.GridCells
@@ -11,28 +11,47 @@ import androidx.compose.material.Icon
 import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Delete
+import androidx.compose.material.icons.filled.PlayArrow
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
-import com.example.symbolspeak_aac.TextToSpeach.textToSpeechView
+import com.example.symbolspeak_aac.TextToSpeach.TextToSpeechViewModel
 
 
-@OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun HomeScreen(
     dataViewModel: DataViewModel = viewModel(),
-    chosenSymbols: ChosenSymbols = ChosenSymbols()
+    chosenSymbols: ChosenSymbols = ChosenSymbols(),
+    ttsViewModel: TextToSpeechViewModel = viewModel()
 ) {
+    val state = ttsViewModel.state.value
+    val context = LocalContext.current
     val products = dataViewModel.state.value.data
 
     Column {
-        textToSpeechView()
+        Button(onClick = {
+            ttsViewModel.onTextFieldValueChange(chosenSymbols.chosen)
+            ttsViewModel.textToSpeech(context)
+        }, enabled = state.isButtonEnabled,
+            modifier = Modifier
+                .fillMaxWidth()
+        ) {
+            Icon(
+                imageVector = Icons.Default.PlayArrow,
+                contentDescription = "Play sentence"
+            )
+            Text(text = "speak")
+        }
 
         Row(
             modifier = Modifier
+                .padding(5.dp)
                 .height(100.dp)
                 .fillMaxWidth()
+                .border(width = 2.dp, Color.LightGray)
         ) {
             LazyRow(
                 modifier = Modifier
@@ -44,7 +63,7 @@ fun HomeScreen(
                     ChosenSymbolView(product = chosen, chosenSymbols)
                 }
             }
-            Column() {
+            Column {
                 Button(
                     onClick = { chosenSymbols.deleteLast() },
                     modifier = Modifier

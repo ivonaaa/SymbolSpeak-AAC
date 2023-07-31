@@ -95,20 +95,3 @@ class MainActivity : ComponentActivity() {
         }
     }
 }
-
-@Composable
-fun SettingsScreen(
-) {
-
-    Column (
-        modifier = Modifier.fillMaxWidth(),
-        horizontalAlignment = Alignment.CenterHorizontally) {
-        Text("Settings Screen", fontSize = 40.sp)
-        Text(text = "Customisation screen")
-        println("Settings Screen")
-    }
-}
-
-
-
-
