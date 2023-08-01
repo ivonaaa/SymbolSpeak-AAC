@@ -13,6 +13,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import coil.compose.rememberAsyncImagePainter
+import com.example.symbolspeak_aac.ChosenSymbolsFiles.ChosenSymbols
 
 @Composable
 fun ChosenSymbolView(

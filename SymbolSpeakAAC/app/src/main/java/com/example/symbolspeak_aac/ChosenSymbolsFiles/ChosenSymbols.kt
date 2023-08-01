@@ -1,12 +1,11 @@
-package com.example.symbolspeak_aac
+package com.example.symbolspeak_aac.ChosenSymbolsFiles
 
-import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateListOf
-import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
+import com.example.symbolspeak_aac.Symbol
 
 class ChosenSymbols: ViewModel() {
-    public var chosen = mutableStateListOf<Symbol>()
+    var chosen = mutableStateListOf<Symbol>()
 
     fun add(newSymbol: Symbol) {
         chosen.add(newSymbol)

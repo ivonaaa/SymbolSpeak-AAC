@@ -11,23 +11,22 @@ import java.util.*
 class TextToSpeechViewModel : ViewModel() {
     private val _state = mutableStateOf(ScreenState())
     val state: State<ScreenState> = _state
-    private  var  textToSpeech:TextToSpeech? = null
+    private  var  textToSpeech: TextToSpeech? = null
 
 
-    fun onTextFieldValueChange(symbols:kotlin.collections.List<Symbol>){
-        var text = ""
-        symbols.forEach {
-            text += it.title
-        }
+    fun onValueChange(symbols: List<Symbol>){
         _state.value = state.value.copy(
-            text = text
+            symbols = symbols
         )
     }
 
-    fun textToSpeech(context: Context){
+    fun textToSpeech(context: Context) {
         _state.value = state.value.copy(
             isButtonEnabled = false
         )
+
+        val text = transformSymbolsToText()
+
         textToSpeech = TextToSpeech(
             context
         ) {
@@ -36,16 +35,25 @@ class TextToSpeechViewModel : ViewModel() {
                     txtToSpeech.language = Locale.ENGLISH
                     txtToSpeech.setSpeechRate(1.0f)
                     txtToSpeech.speak(
-                        _state.value.text,
+                        text,
                         TextToSpeech.QUEUE_ADD,
                         null,
                         null
                     )
                 }
             }
+
             _state.value = state.value.copy(
                 isButtonEnabled = true
             )
         }
+    }
+
+    private fun transformSymbolsToText(): String {
+        var text = ""
+        _state.value.symbols.forEach {
+            text += it.title + " "
+        }
+        return text
     }
 }

@@ -5,12 +5,12 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.ReadOnlyComposable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import coil.compose.rememberAsyncImagePainter
+import com.example.symbolspeak_aac.ChosenSymbolsFiles.ChosenSymbols
 
 @Composable
 fun SymbolView(
@@ -21,7 +21,7 @@ fun SymbolView(
         modifier = Modifier
             .padding(3.dp)
             .fillMaxWidth(),
-        border = BorderStroke(2.dp, color = colorPicker(type = product.type)),
+        border = BorderStroke(3.dp, color = colorPicker(type = product.type)),
     ) {
         Button(onClick = { chosenSymbols.add(product) },
             colors = ButtonDefaults.buttonColors(backgroundColor = Color.White),

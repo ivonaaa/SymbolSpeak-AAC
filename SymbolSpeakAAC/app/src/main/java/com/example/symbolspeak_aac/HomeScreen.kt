@@ -18,6 +18,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.example.symbolspeak_aac.ChosenSymbolsFiles.ChosenSymbols
 import com.example.symbolspeak_aac.TextToSpeach.TextToSpeechViewModel
 
 
@@ -29,14 +30,17 @@ fun HomeScreen(
 ) {
     val state = ttsViewModel.state.value
     val context = LocalContext.current
+
     val products = dataViewModel.state.value.data
 
     Column {
         Button(onClick = {
-            ttsViewModel.onTextFieldValueChange(chosenSymbols.chosen)
-            ttsViewModel.textToSpeech(context)
-        }, enabled = state.isButtonEnabled,
+                ttsViewModel.onValueChange(chosenSymbols.chosen)
+                ttsViewModel.textToSpeech(context)
+            },
+            enabled = state.isButtonEnabled,
             modifier = Modifier
+                .padding(horizontal = 5.dp)
                 .fillMaxWidth()
         ) {
             Icon(
@@ -45,7 +49,7 @@ fun HomeScreen(
             )
             Text(text = "speak")
         }
-
+        
         Row(
             modifier = Modifier
                 .padding(5.dp)
@@ -78,14 +82,15 @@ fun HomeScreen(
                 }
             }
         }
+
         products?.let {
             LazyVerticalGrid(
                 columns = GridCells.Fixed(3),
                 contentPadding = PaddingValues(8.dp)
             ) {
-                items(products.size, itemContent = {
+                items(products.size) {
                     SymbolView(product = products[it], chosenSymbols)
-                })
+                }
             }
         }
 
