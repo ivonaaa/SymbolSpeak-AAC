@@ -4,8 +4,10 @@ import androidx.compose.runtime.mutableStateOf
 import android.content.Context
 import android.speech.tts.TextToSpeech
 import androidx.compose.runtime.State
+import androidx.compose.runtime.collectAsState
 import androidx.lifecycle.ViewModel
 import com.example.symbolspeak_aac.Symbol
+import com.example.symbolspeak_aac.UserSettings
 import java.util.*
 
 class TextToSpeechViewModel : ViewModel() {
@@ -20,7 +22,7 @@ class TextToSpeechViewModel : ViewModel() {
         )
     }
 
-    fun textToSpeech(context: Context) {
+    fun textToSpeech(context: Context, ttsRate: Float) {
         _state.value = state.value.copy(
             isButtonEnabled = false
         )
@@ -33,7 +35,7 @@ class TextToSpeechViewModel : ViewModel() {
             if (it == TextToSpeech.SUCCESS) {
                 textToSpeech?.let { txtToSpeech ->
                     txtToSpeech.language = Locale.ENGLISH
-                    txtToSpeech.setSpeechRate(1.0f)
+                    txtToSpeech.setSpeechRate(ttsRate.toFloat())
                     txtToSpeech.speak(
                         text,
                         TextToSpeech.QUEUE_ADD,

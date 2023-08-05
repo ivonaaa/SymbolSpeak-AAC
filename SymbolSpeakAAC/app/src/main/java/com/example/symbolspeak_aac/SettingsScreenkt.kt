@@ -98,8 +98,8 @@ private fun PickSettings() {
         Button(
             onClick = {
                 CoroutineScope(Dispatchers.IO).launch {
-                    if (tokenValue2.value.text.toInt() < 14) {
-                        tokenValue2.value = TextFieldValue("14")
+                    if (tokenValue2.value.text.toInt() < 16) {
+                        tokenValue2.value = TextFieldValue("16")
                     }
                     if (tokenValue3.value.text.toFloat() < 0.0 || tokenValue3.value.text.toFloat() > 1.0) {
                         tokenValue3.value = TextFieldValue("1.0")

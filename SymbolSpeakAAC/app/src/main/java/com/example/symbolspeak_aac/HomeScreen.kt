@@ -13,6 +13,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material.icons.filled.PlayArrow
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
@@ -30,13 +31,14 @@ fun HomeScreen(
 ) {
     val state = ttsViewModel.state.value
     val context = LocalContext.current
-
+    val store = UserSettings(context)
+    val ttsRate = store.getTtsRate.collectAsState(initial = 1.0)
     val products = dataViewModel.state.value.data
 
     Column {
         Button(onClick = {
                 ttsViewModel.onValueChange(chosenSymbols.chosen)
-                ttsViewModel.textToSpeech(context)
+                ttsViewModel.textToSpeech(context, ttsRate = ttsRate.value.toFloat())
             },
             enabled = state.isButtonEnabled,
             modifier = Modifier
