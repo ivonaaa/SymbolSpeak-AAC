@@ -1,11 +1,6 @@
 package com.example.symbolspeak_aac
 
-import android.content.Context
-import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.Text
 import androidx.compose.material.TextField
@@ -17,14 +12,9 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.datastore.core.DataStore
-import androidx.datastore.preferences.preferencesDataStore
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.map
 import androidx.compose.material.*
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.datastore.preferences.core.*
@@ -37,7 +27,6 @@ fun SettingsScreen(
 ) {
     Column (
         modifier = Modifier.fillMaxWidth(),
-        horizontalAlignment = Alignment.CenterHorizontally
     ) {
         PickSettings()
     }
@@ -47,11 +36,7 @@ fun SettingsScreen(
 @Composable
 private fun PickSettings() {
     val context = LocalContext.current
-    val keyboardController = LocalSoftwareKeyboardController.current
     val tokenValue2 = remember {
-        mutableStateOf(TextFieldValue())
-    }
-    val tokenValue3 = remember {
         mutableStateOf(TextFieldValue())
     }
     val store = UserSettings(context)
@@ -61,10 +46,13 @@ private fun PickSettings() {
     val tokenValue1 = remember {
         mutableStateOf(false)
     }
+    val tokenValue3 = remember {
+        mutableStateOf(0f)
+    }
 
     Column(
-        modifier = Modifier.clickable { keyboardController?.hide() },
-        horizontalAlignment = Alignment.CenterHorizontally
+        modifier = Modifier.padding(5.dp),
+        horizontalAlignment = Alignment.Start
     ) {
         Spacer(modifier = Modifier.height(30.dp))
 
@@ -87,11 +75,19 @@ private fun PickSettings() {
             fontSize = tokenText2.value.sp)
 
         Text(text = "Pick voice rate: ")
-        TextField(
+        Slider(
             value = tokenValue3.value,
-            onValueChange = { tokenValue3.value = it },
-            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Decimal)
+            onValueChange = { sliderValue_ ->
+                tokenValue3.value = sliderValue_
+            },
+            onValueChangeFinished = {
+                // this is called when the user completed selecting the value
+
+            },
+            valueRange = 0f..1f
         )
+
+        Text(text = tokenValue3.value.toString())
 
         Spacer(modifier = Modifier.height(30.dp))
 
@@ -101,12 +97,12 @@ private fun PickSettings() {
                     if (tokenValue2.value.text.toInt() < 16) {
                         tokenValue2.value = TextFieldValue("16")
                     }
-                    if (tokenValue3.value.text.toFloat() < 0.0 || tokenValue3.value.text.toFloat() > 1.0) {
-                        tokenValue3.value = TextFieldValue("1.0")
+                    if (tokenValue3.value < 0.0 || tokenValue3.value > 1.0) {
+                        tokenValue3.value = 1.0F
                     }
                     store.saveToken(tokenValue1.value,
                         tokenValue2.value.text.toInt(),
-                        tokenValue3.value.text.toFloat())
+                        tokenValue3.value)
                 }
             }
         ) {
