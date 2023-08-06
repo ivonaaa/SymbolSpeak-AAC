@@ -14,6 +14,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import coil.compose.rememberAsyncImagePainter
 import com.example.symbolspeak_aac.ChosenSymbolsFiles.ChosenSymbols
+import com.example.symbolspeak_aac.Symbol.Symbol
 
 @Composable
 fun ChosenSymbolView(
@@ -24,7 +25,7 @@ fun ChosenSymbolView(
         modifier = Modifier
             .padding(2.dp)
             .fillMaxWidth(),
-        border = BorderStroke(2.dp, Color.LightGray),
+        border = BorderStroke(2.dp, Color.White),
     ) {
         Button(onClick = { chosenSymbols.delete(product) },
             colors = ButtonDefaults.buttonColors(backgroundColor = Color.White),

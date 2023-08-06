@@ -57,7 +57,7 @@ fun HomeScreen(
                 .padding(5.dp)
                 .height(100.dp)
                 .fillMaxWidth()
-                .border(width = 2.dp, Color.LightGray)
+                .border(width = 2.dp, Color.White)
         ) {
             LazyRow(
                 modifier = Modifier

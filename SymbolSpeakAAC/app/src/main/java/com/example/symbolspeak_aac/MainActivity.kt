@@ -59,20 +59,20 @@ class MainActivity : ComponentActivity() {
                                 when(it.id) {
                                     "home" ->
                                     {
-                                        navController?.navigate(NavRoute.Home.path)
+                                        navController.navigate(NavRoute.Home.path)
                                         scope.launch {
                                             scaffoldState.drawerState.close()
                                         }
                                     }
                                     "Settings" ->
                                     {
-                                        navController?.navigate(NavRoute.Settings.path)
+                                        navController.navigate(NavRoute.Settings.path)
                                         scope.launch {
                                             scaffoldState.drawerState.close()
                                         }
                                     }
                                     "AboutAAC" -> {
-                                        navController?.navigate(NavRoute.Info.path)
+                                        navController.navigate(NavRoute.Info.path)
                                         scope.launch {
                                             scaffoldState.drawerState.close()
                                         }

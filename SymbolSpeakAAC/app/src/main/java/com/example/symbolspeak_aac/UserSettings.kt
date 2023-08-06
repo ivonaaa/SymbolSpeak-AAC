@@ -24,8 +24,8 @@ class UserSettings(private val context: Context) {
     }
 
     val getTtsRate: Flow<Float> = context.dataStore.data.map { preferences ->
-        preferences[ttsRate] ?: 1.0
-    } as Flow<Float>
+        preferences[ttsRate] ?: 1.0f
+    }
 
     suspend fun saveToken(token1: Boolean, token2: Int, token3: Float) {
         context.dataStore.edit { preferences ->
