@@ -6,7 +6,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
-import com.example.symbolspeak_aac.UserSettings
+import com.example.symbolspeak_aac.SettingsScreenFiles.UserSettings
 
 private val OrangeColorPalette = lightColors(
     primary = Color(213,119,55,255),

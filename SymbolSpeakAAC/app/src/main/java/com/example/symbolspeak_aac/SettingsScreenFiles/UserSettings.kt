@@ -1,4 +1,4 @@
-package com.example.symbolspeak_aac
+package com.example.symbolspeak_aac.SettingsScreenFiles
 
 import android.content.Context
 import androidx.datastore.core.DataStore

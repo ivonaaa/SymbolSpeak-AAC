@@ -14,6 +14,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.material.*
 import androidx.compose.ui.viewinterop.AndroidView
+import com.example.symbolspeak_aac.SettingsScreenFiles.SegmentedControl
+import com.example.symbolspeak_aac.SettingsScreenFiles.UserSettings
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -31,15 +33,15 @@ fun SettingsScreen(
 @Composable
 private fun PickSettings() {
     val context = LocalContext.current
-    val tokenValue2 = remember {
-        mutableStateOf(16)
-    }
     val store = UserSettings(context)
     val tokenText1 = store.getChosenColorSet.collectAsState(initial = false)
     val tokenText2 = store.getFontSize.collectAsState(initial = 14)
     val tokenText3 = store.getTtsRate.collectAsState(initial = 1.0)
     val tokenValue1 = remember {
         mutableStateOf(false)
+    }
+    val tokenValue2 = remember {
+        mutableStateOf(16)
     }
     val tokenValue3 = remember {
         mutableStateOf(0f)
@@ -57,7 +59,13 @@ private fun PickSettings() {
         Spacer(modifier = Modifier.height(15.dp))
 
         Text(text = "Pick color theme: ")
-        Switch(checked = tokenValue1.value, onCheckedChange = {tokenValue1.value = it})
+        val genders = listOf("Green theme", "Orange theme")
+        SegmentedControl(
+            items = genders,
+            defaultSelectedItemIndex =  0
+        ) {
+            tokenValue1.value = it != 0
+        }
 
         Text(text = "Pick font size: ")
         AndroidView(
@@ -78,7 +86,7 @@ private fun PickSettings() {
         Text(text = "Pick voice rate: ")
 
         Column(
-            modifier = Modifier.padding(10.dp),
+            modifier = Modifier.padding(20.dp),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
 

@@ -20,6 +20,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.symbolspeak_aac.ChosenSymbolsFiles.ChosenSymbols
+import com.example.symbolspeak_aac.SettingsScreenFiles.UserSettings
 import com.example.symbolspeak_aac.TextToSpeach.TextToSpeechViewModel
 
 
