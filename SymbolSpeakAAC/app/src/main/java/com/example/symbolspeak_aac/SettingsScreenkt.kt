@@ -51,17 +51,17 @@ private fun PickSettings() {
         modifier = Modifier.padding(5.dp),
         horizontalAlignment = Alignment.Start
     ) {
-
-        Text(text = tokenText1.value.toString())
-        Text(text = tokenText2.value.toString())
-        Text(text = tokenText3.value.toString())
+        Text(text = "Current settings: ")
+        Text(text = "Color theme: " + if (tokenText1.value) "Orange theme" else "Green Theme")
+        Text(text = "Font size: ${tokenText2.value}")
+        Text(text = "Tts rate: ${tokenText3.value}")
 
         Spacer(modifier = Modifier.height(15.dp))
 
         Text(text = "Pick color theme: ")
-        val genders = listOf("Green theme", "Orange theme")
+        val themes = listOf("Green theme", "Orange theme")
         SegmentedControl(
-            items = genders,
+            items = themes,
             defaultSelectedItemIndex =  0
         ) {
             tokenValue1.value = it != 0
