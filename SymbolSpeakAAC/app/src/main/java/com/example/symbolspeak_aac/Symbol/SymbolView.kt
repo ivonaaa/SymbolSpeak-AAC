@@ -1,4 +1,4 @@
-package com.example.symbolspeak_aac.symbol
+package com.example.symbolspeak_aac.Symbol
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
@@ -10,7 +10,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import coil.compose.rememberAsyncImagePainter
-import com.example.symbolspeak_aac.chosenSymbolsFiles.ChosenSymbols
+import com.example.symbolspeak_aac.ChosenSymbolsFiles.ChosenSymbols
 
 @Composable
 fun SymbolView(

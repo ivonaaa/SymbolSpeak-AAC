@@ -1,6 +1,6 @@
-package com.example.symbolspeak_aac.textToSpeach
+package com.example.symbolspeak_aac.TextToSpeach
 
-import com.example.symbolspeak_aac.symbol.Symbol
+import com.example.symbolspeak_aac.Symbol.Symbol
 
 data class ScreenState(
     val isButtonEnabled: Boolean = true,

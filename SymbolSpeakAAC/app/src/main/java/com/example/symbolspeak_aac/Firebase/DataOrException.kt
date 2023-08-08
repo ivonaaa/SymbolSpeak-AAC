@@ -1,4 +1,4 @@
-package com.example.symbolspeak_aac.firebase
+package com.example.symbolspeak_aac.Firebase
 
 data class DataOrException<T, E : Exception?>(
     var data: T? = null,

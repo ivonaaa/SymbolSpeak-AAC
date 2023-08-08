@@ -3,19 +3,16 @@ package com.example.symbolspeak_aac
 import android.widget.NumberPicker
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.material.*
+import androidx.compose.runtime.*
 import androidx.compose.ui.viewinterop.AndroidView
-import com.example.symbolspeak_aac.settingsScreenFiles.SegmentedControl
-import com.example.symbolspeak_aac.settingsScreenFiles.UserSettings
+import com.example.symbolspeak_aac.SettingsScreenFiles.SegmentedControl
+import com.example.symbolspeak_aac.SettingsScreenFiles.UserSettings
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -37,6 +34,7 @@ private fun PickSettings() {
     val tokenText1 = store.getChosenColorSet.collectAsState(initial = false)
     val tokenText2 = store.getFontSize.collectAsState(initial = 14)
     val tokenText3 = store.getTtsRate.collectAsState(initial = 1.0)
+
     val tokenValue1 = remember {
         mutableStateOf(false)
     }
@@ -62,7 +60,7 @@ private fun PickSettings() {
         val themes = listOf("Green theme", "Orange theme")
         SegmentedControl(
             items = themes,
-            defaultSelectedItemIndex =  0
+            defaultSelectedItemIndex = 0
         ) {
             tokenValue1.value = it != 0
         }

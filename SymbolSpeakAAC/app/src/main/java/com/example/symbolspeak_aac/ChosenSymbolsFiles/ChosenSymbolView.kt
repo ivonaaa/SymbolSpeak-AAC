@@ -1,4 +1,4 @@
-package com.example.symbolspeak_aac.chosenSymbolsFiles
+package com.example.symbolspeak_aac.ChosenSymbolsFiles
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
@@ -13,7 +13,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import coil.compose.rememberAsyncImagePainter
-import com.example.symbolspeak_aac.symbol.Symbol
+import com.example.symbolspeak_aac.Symbol.Symbol
 
 @Composable
 fun ChosenSymbolView(

@@ -1,4 +1,4 @@
-package com.example.symbolspeak_aac.settingsScreenFiles
+package com.example.symbolspeak_aac.SettingsScreenFiles
 
 import android.content.Context
 import androidx.datastore.core.DataStore
@@ -27,11 +27,11 @@ class UserSettings(private val context: Context) {
         preferences[ttsRate] ?: 1.0f
     }
 
-    suspend fun saveToken(token1: Boolean, token2: Int, token3: Float) {
+    suspend fun saveToken(colorTheme: Boolean, fontSize: Int, ttsrate: Float) {
         context.dataStore.edit { preferences ->
-            preferences[color] = token1
-            preferences[chosenFontSize] = token2
-            preferences[ttsRate] = token3
+            preferences[color] = colorTheme
+            preferences[chosenFontSize] = fontSize
+            preferences[ttsRate] = ttsrate
         }
     }
 }

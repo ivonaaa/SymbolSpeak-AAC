@@ -1,11 +1,11 @@
-package com.example.symbolspeak_aac.textToSpeach
+package com.example.symbolspeak_aac.TextToSpeach
 
 import androidx.compose.runtime.mutableStateOf
 import android.content.Context
 import android.speech.tts.TextToSpeech
 import androidx.compose.runtime.State
 import androidx.lifecycle.ViewModel
-import com.example.symbolspeak_aac.symbol.Symbol
+import com.example.symbolspeak_aac.Symbol.Symbol
 import java.util.*
 
 class TextToSpeechViewModel : ViewModel() {

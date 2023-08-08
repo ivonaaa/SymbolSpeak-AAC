@@ -12,7 +12,7 @@ import androidx.compose.material.icons.filled.Settings
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.navigation.compose.rememberNavController
-import com.example.symbolspeak_aac.navigation.*
+import com.example.symbolspeak_aac.Navigation.*
 import com.example.symbolspeak_aac.ui.theme.SymbolSpeakAACTheme
 import kotlinx.coroutines.launch
 
@@ -27,7 +27,7 @@ class MainActivity : ComponentActivity() {
                 Scaffold (
                     scaffoldState = scaffoldState,
                     topBar = {
-                        com.example.symbolspeak_aac.navigation.AppBar(
+                        com.example.symbolspeak_aac.Navigation.AppBar(
                             navController = navController,
                             onNavigationIconClick = {
                                 scope.launch {

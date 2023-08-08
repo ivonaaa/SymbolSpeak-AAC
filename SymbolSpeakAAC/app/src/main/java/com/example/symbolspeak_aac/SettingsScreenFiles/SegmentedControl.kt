@@ -1,4 +1,4 @@
-package com.example.symbolspeak_aac.settingsScreenFiles
+package com.example.symbolspeak_aac.SettingsScreenFiles
 
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.offset

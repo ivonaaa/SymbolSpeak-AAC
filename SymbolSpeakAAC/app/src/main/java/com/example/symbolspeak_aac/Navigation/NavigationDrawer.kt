@@ -1,4 +1,4 @@
-package com.example.symbolspeak_aac.navigation
+package com.example.symbolspeak_aac.Navigation
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*

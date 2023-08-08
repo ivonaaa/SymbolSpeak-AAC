@@ -1,4 +1,4 @@
-package com.example.symbolspeak_aac.navigation
+package com.example.symbolspeak_aac.Navigation
 
 import androidx.compose.ui.graphics.vector.ImageVector
 
