@@ -1,4 +1,4 @@
-package com.example.symbolspeak_aac.Symbol
+package com.example.symbolspeak_aac.symbol
 
 data class Symbol(
     var id: String = "",

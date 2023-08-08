@@ -1,4 +1,4 @@
-package com.example.symbolspeak_aac
+package com.example.symbolspeak_aac.navigation
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -6,7 +6,9 @@ import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import com.example.symbolspeak_aac.Navigation.NavRoute
+import com.example.symbolspeak_aac.HomeScreen
+import com.example.symbolspeak_aac.InfoScreen
+import com.example.symbolspeak_aac.SettingsScreen
 
 @Composable
 fun NavGraph(modifier: Modifier = Modifier, navController: NavHostController) {

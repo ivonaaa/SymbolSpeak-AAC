@@ -1,4 +1,4 @@
-package com.example.symbolspeak_aac.InfoScreenFiles
+package com.example.symbolspeak_aac.infoScreenFiles
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -14,7 +14,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.symbolspeak_aac.R
-import com.example.symbolspeak_aac.SettingsScreenFiles.UserSettings
+import com.example.symbolspeak_aac.settingsScreenFiles.UserSettings
 
 @Composable
 fun WhatIsAACScreen() {

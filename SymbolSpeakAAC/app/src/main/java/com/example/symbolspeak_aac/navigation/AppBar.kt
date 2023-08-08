@@ -1,23 +1,16 @@
-package com.example.symbolspeak_aac
+package com.example.symbolspeak_aac.navigation
 
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Menu
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
 import androidx.compose.ui.res.stringResource
-import androidx.navigation.NavController
-import androidx.navigation.compose.currentBackStackEntryAsState
+import com.example.symbolspeak_aac.R
 
 @Composable
 fun AppBar(
-    navController: NavController,
     onNavigationIconClick : () -> Unit
 ) {
-    val navBackStackEntry by navController.currentBackStackEntryAsState()
-    val currentRoute = navBackStackEntry?.destination?.route
-
-
 
     TopAppBar(
         title = {

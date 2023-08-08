@@ -12,10 +12,10 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.*
 import androidx.compose.ui.window.Popup
-import com.example.symbolspeak_aac.InfoScreenFiles.PeopleWhoNeedAACScreen
-import com.example.symbolspeak_aac.InfoScreenFiles.TypesOfAACScreen
-import com.example.symbolspeak_aac.InfoScreenFiles.WhatIsAACScreen
-import com.example.symbolspeak_aac.InfoScreenFiles.WindowCenterOffsetPositionProvider
+import com.example.symbolspeak_aac.infoScreenFiles.PeopleWhoNeedAACScreen
+import com.example.symbolspeak_aac.infoScreenFiles.TypesOfAACScreen
+import com.example.symbolspeak_aac.infoScreenFiles.WhatIsAACScreen
+import com.example.symbolspeak_aac.infoScreenFiles.WindowCenterOffsetPositionProvider
 
 @Composable
 fun InfoScreen(

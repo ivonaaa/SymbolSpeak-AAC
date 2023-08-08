@@ -1,4 +1,4 @@
-package com.example.symbolspeak_aac.InfoScreenFiles
+package com.example.symbolspeak_aac.infoScreenFiles
 
 import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.IntRect

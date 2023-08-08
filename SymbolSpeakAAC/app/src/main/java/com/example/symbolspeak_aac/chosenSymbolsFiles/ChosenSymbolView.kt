@@ -1,30 +1,32 @@
-package com.example.symbolspeak_aac
+package com.example.symbolspeak_aac.chosenSymbolsFiles
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
-import androidx.compose.material.*
+import androidx.compose.material.Button
+import androidx.compose.material.ButtonDefaults
+import androidx.compose.material.Card
+import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import coil.compose.rememberAsyncImagePainter
-import com.example.symbolspeak_aac.ChosenSymbolsFiles.ChosenSymbols
-import com.example.symbolspeak_aac.Symbol.Symbol
+import com.example.symbolspeak_aac.symbol.Symbol
 
 @Composable
-fun SymbolView(
+fun ChosenSymbolView(
     product : Symbol,
     chosenSymbols: ChosenSymbols
 ) {
     Card(
         modifier = Modifier
-            .padding(3.dp)
+            .padding(2.dp)
             .fillMaxWidth(),
-        border = BorderStroke(3.dp, color = colorPicker(type = product.type)),
+        border = BorderStroke(2.dp, Color.White),
     ) {
-        Button(onClick = { chosenSymbols.add(product) },
+        Button(onClick = { chosenSymbols.delete(product) },
             colors = ButtonDefaults.buttonColors(backgroundColor = Color.White),
             modifier = Modifier.height(100.dp)
         ) {
@@ -38,7 +40,7 @@ fun SymbolView(
                 )
                 Image(
                     painter = rememberAsyncImagePainter(product.imageURL),
-                    contentDescription = "product image",
+                    contentDescription = "gfg image",
                     modifier = Modifier
                         .padding(2.dp)
                         .size(60.dp)
@@ -46,16 +48,5 @@ fun SymbolView(
                 )
             }
         }
-    }
-}
-
-fun colorPicker(type : String): Color {
-    return when (type) {
-        "Ayes/no" -> Color.Cyan
-        "fruit" -> Color.Green
-        "vegetable" -> Color.Yellow
-        "math" -> Color.Blue
-        "feelings" -> Color.Magenta
-        else -> Color.Gray
     }
 }

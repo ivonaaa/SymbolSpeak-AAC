@@ -14,8 +14,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.material.*
 import androidx.compose.ui.viewinterop.AndroidView
-import com.example.symbolspeak_aac.SettingsScreenFiles.SegmentedControl
-import com.example.symbolspeak_aac.SettingsScreenFiles.UserSettings
+import com.example.symbolspeak_aac.settingsScreenFiles.SegmentedControl
+import com.example.symbolspeak_aac.settingsScreenFiles.UserSettings
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
