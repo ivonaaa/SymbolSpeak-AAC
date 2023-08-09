@@ -17,7 +17,7 @@ class ChosenSymbols: ViewModel() {
         }
     }
 
-    fun delete(item: Symbol) {
-        chosen.remove(item)
+    fun delete(index: Int) {
+        chosen.removeAt(index)
     }
 }

@@ -8,7 +8,6 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.*
 import androidx.compose.ui.window.Popup
@@ -20,9 +19,9 @@ import com.example.symbolspeak_aac.InfoScreenFiles.WindowCenterOffsetPositionPro
 @Composable
 fun InfoScreen(
 ) {
-    var checked1 by remember { mutableStateOf(false) }
-    var checked2 by remember { mutableStateOf(false) }
-    var checked3 by remember { mutableStateOf(false) }
+    var isOnWhatIsAAC by remember { mutableStateOf(false) }
+    var isOnPeopleWhoUseAAC by remember { mutableStateOf(false) }
+    var isOnTypesOdAAC by remember { mutableStateOf(false) }
 
     Column {
         Column(
@@ -34,30 +33,30 @@ fun InfoScreen(
 
         Column {
             TextButton(
-                onClick = { checked1 = true }
+                onClick = { isOnWhatIsAAC = true }
             ) {
                 Text("* What is AAC?", fontSize = 20.sp)
             }
 
-            if (checked1) {
+            if (isOnWhatIsAAC) {
                 Popup(
                     popupPositionProvider =
                     WindowCenterOffsetPositionProvider(),
-                    onDismissRequest = { checked1 = false },
+                    onDismissRequest = { isOnWhatIsAAC = false },
                 ) {
                     Surface(
                         modifier = Modifier
                             .fillMaxSize(1f),
                         border = BorderStroke(1.dp, MaterialTheme.colors.secondary),
                         shape = RoundedCornerShape(0.dp),
-                        color = Color.White.copy(alpha = 1.0f),
+                        color = MaterialTheme.colors.background,
                     ) {
                         Column(
                             modifier = Modifier.padding(1.dp)
                         ) {
                             // Composable content to be shown in the Popup
                             Row {
-                                TextButton(onClick = { checked1 = false }) {
+                                TextButton(onClick = { isOnWhatIsAAC = false }) {
                                     Icon(
                                         imageVector = Icons.Default.ArrowBack,
                                         contentDescription = "Back"
@@ -72,29 +71,29 @@ fun InfoScreen(
             }
 
 
-            TextButton(onClick = { checked2 = true }) {
+            TextButton(onClick = { isOnPeopleWhoUseAAC = true }) {
                 Text("* People who need AAC", fontSize = 20.sp)
             }
 
-            if (checked2) {
+            if (isOnPeopleWhoUseAAC) {
                 Popup(
                     popupPositionProvider =
                     WindowCenterOffsetPositionProvider(),
-                    onDismissRequest = { checked2 = false },
+                    onDismissRequest = { isOnPeopleWhoUseAAC = false },
                 ) {
                     Surface(
                         modifier = Modifier
                             .fillMaxSize(1f),
                         border = BorderStroke(1.dp, MaterialTheme.colors.secondary),
                         shape = RoundedCornerShape(0.dp),
-                        color = Color.White.copy(alpha = 1.0f),
+                        color = MaterialTheme.colors.background,
                     ) {
                         Column(
                             modifier = Modifier.padding(1.dp)
                         ) {
                             // Composable content to be shown in the Popup
                             Row {
-                                TextButton(onClick = { checked2 = false }) {
+                                TextButton(onClick = { isOnPeopleWhoUseAAC = false }) {
                                     Icon(
                                         imageVector = Icons.Default.ArrowBack,
                                         contentDescription = "Back"
@@ -108,29 +107,29 @@ fun InfoScreen(
                 }
             }
 
-            TextButton(onClick = { checked3 = true }) {
+            TextButton(onClick = { isOnTypesOdAAC = true }) {
                 Text("* Types of AAC", fontSize = 20.sp)
             }
 
-            if (checked3) {
+            if (isOnTypesOdAAC) {
                 Popup(
                     popupPositionProvider =
                     WindowCenterOffsetPositionProvider(),
-                    onDismissRequest = { checked3 = false },
+                    onDismissRequest = { isOnTypesOdAAC = false },
                 ) {
                     Surface(
                         modifier = Modifier
                             .fillMaxSize(1f),
                         border = BorderStroke(1.dp, MaterialTheme.colors.secondary),
                         shape = RoundedCornerShape(0.dp),
-                        color = Color.White.copy(alpha = 1.0f),
+                        color = MaterialTheme.colors.background,
                     ) {
                         Column(
                             modifier = Modifier.padding(1.dp)
                         ) {
                             // Composable content to be shown in the Popup
                             Row {
-                                TextButton(onClick = { checked3 = false }) {
+                                TextButton(onClick = { isOnTypesOdAAC = false }) {
                                     Icon(
                                         imageVector = Icons.Default.ArrowBack,
                                         contentDescription = "Back"

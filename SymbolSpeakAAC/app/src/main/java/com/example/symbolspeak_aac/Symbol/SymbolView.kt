@@ -60,6 +60,7 @@ fun colorPicker(type : String): Color {
         "animal" -> Color(176, 207, 165, 255)
         "aPronunce" -> Color(202, 92, 92, 255)
         "aVerb" -> Color(156, 39, 176, 255)
+        "aPreverb" -> Color(163, 83, 177, 255)
         "sport" -> Color(255, 152, 0, 255)
         "profession" -> Color(0, 150, 136, 255)
         "adjective" -> Color(207, 193, 140, 255)

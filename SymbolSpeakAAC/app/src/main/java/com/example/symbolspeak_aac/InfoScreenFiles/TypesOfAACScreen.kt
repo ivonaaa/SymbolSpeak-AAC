@@ -25,11 +25,12 @@ fun TypesOfAACScreen() {
     Column(
         modifier = Modifier
             .verticalScroll(rememberScrollState())
-            .padding(horizontal = 16.dp)
             .padding(16.dp)
             .fillMaxSize()
     ) {
-        Text(text = stringResource(id = R.string.typesOfAAC), fontSize = fontSize.value.sp)
-        Text(text = stringResource(id = R.string.defineTypesOfAac), fontSize = fontSize.value.sp)
+        Text(text = stringResource(id = R.string.typesOfAAC),
+            fontSize = fontSize.value.sp)
+        Text(text = stringResource(id = R.string.defineTypesOfAac),
+            fontSize = fontSize.value.sp)
     }
 }

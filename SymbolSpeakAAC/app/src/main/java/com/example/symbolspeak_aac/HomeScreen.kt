@@ -1,13 +1,16 @@
 package com.example.symbolspeak_aac
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.material.Button
 import androidx.compose.material.Icon
+import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Delete
@@ -69,8 +72,8 @@ fun HomeScreen(
                     .fillMaxWidth(0.8f)
             )
             {
-                items(chosenSymbols.chosen) { chosen ->
-                    ChosenSymbolView(product = chosen, chosenSymbols)
+                itemsIndexed(chosenSymbols.chosen) { index, chosen ->
+                    ChosenSymbolView(product = chosen, index = index, chosenSymbols)
                 }
             }
             Column {

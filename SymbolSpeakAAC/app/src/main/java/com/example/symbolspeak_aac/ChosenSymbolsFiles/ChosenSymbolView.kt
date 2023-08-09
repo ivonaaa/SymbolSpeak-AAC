@@ -18,6 +18,7 @@ import com.example.symbolspeak_aac.Symbol.Symbol
 @Composable
 fun ChosenSymbolView(
     product : Symbol,
+    index: Int,
     chosenSymbols: ChosenSymbols
 ) {
     Card(
@@ -26,7 +27,7 @@ fun ChosenSymbolView(
             .fillMaxWidth(),
         border = BorderStroke(2.dp, Color.White),
     ) {
-        Button(onClick = { chosenSymbols.delete(product) },
+        Button(onClick = { chosenSymbols.delete(index) },
             colors = ButtonDefaults.buttonColors(backgroundColor = Color.White),
             modifier = Modifier.height(100.dp)
         ) {

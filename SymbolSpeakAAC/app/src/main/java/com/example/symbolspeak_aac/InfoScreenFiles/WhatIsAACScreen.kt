@@ -25,13 +25,14 @@ fun WhatIsAACScreen() {
     Column(
         modifier = Modifier
             .verticalScroll(rememberScrollState())
-            .padding(horizontal = 1.dp)
             .padding(16.dp)
             .fillMaxSize(0.8f)
     ) {
-        Text(text = stringResource(id = R.string.whatIsAAC), fontSize = fontSize.value.sp)
+        Text(text = stringResource(id = R.string.whatIsAAC),
+            fontSize = fontSize.value.sp)
 
-        Text(text = stringResource(id = R.string.defineAAC), fontSize = fontSize.value.sp)
+        Text(text = stringResource(id = R.string.defineAAC),
+            fontSize = fontSize.value.sp)
 
     }
 }

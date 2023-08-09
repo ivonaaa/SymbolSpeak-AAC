@@ -106,7 +106,7 @@ private fun PickSettings() {
         Button(
             onClick = {
                 CoroutineScope(Dispatchers.IO).launch {
-                    store.saveToken(tokenValue1.value,
+                    store.saveSettings(tokenValue1.value,
                         tokenValue2.value,
                         tokenValue3.value)
                 }

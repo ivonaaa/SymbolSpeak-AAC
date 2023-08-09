@@ -9,29 +9,30 @@ import kotlinx.coroutines.flow.map
 
 class UserSettings(private val context: Context) {
     companion object {
-        private val Context.dataStore: DataStore<Preferences> by preferencesDataStore("userSettings")
-        private val color = booleanPreferencesKey("color")
+        private val Context.dataStore:
+                DataStore<Preferences> by preferencesDataStore("userSettings")
+        private val chosenColorTheme = booleanPreferencesKey("color")
         private val chosenFontSize = intPreferencesKey("font_size")
-        private val ttsRate = floatPreferencesKey("tts_rate")
+        private val chosenTtsRate = floatPreferencesKey("tts_rate")
     }
 
     val getChosenColorSet: Flow<Boolean> = context.dataStore.data.map { preferences ->
-        preferences[color] ?: false
+        preferences[chosenColorTheme] ?: false
     }
 
     val getFontSize: Flow<Int> = context.dataStore.data.map { preferences ->
-        preferences[chosenFontSize] ?: 14
+        preferences[chosenFontSize] ?: 16
     }
 
     val getTtsRate: Flow<Float> = context.dataStore.data.map { preferences ->
-        preferences[ttsRate] ?: 1.0f
+        preferences[chosenTtsRate] ?: 1.0f
     }
 
-    suspend fun saveToken(colorTheme: Boolean, fontSize: Int, ttsrate: Float) {
+    suspend fun saveSettings(colorTheme: Boolean, fontSize: Int, ttsRate: Float) {
         context.dataStore.edit { preferences ->
-            preferences[color] = colorTheme
+            preferences[chosenColorTheme] = colorTheme
             preferences[chosenFontSize] = fontSize
-            preferences[ttsRate] = ttsrate
+            preferences[chosenTtsRate] = ttsRate
         }
     }
 }
