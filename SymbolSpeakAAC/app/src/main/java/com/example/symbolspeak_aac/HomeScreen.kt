@@ -43,21 +43,8 @@ fun HomeScreen(
     val products = dataViewModel.state.value.data
 
     Column {
-        Button(onClick = {
-                ttsViewModel.onValueChange(chosenSymbols.chosen)
-                ttsViewModel.textToSpeech(context, ttsRate = ttsRate.value.toFloat())
-            },
-            enabled = state.isButtonEnabled,
-            modifier = Modifier
-                .padding(horizontal = 5.dp)
-                .fillMaxWidth()
-        ) {
-            Icon(
-                imageVector = Icons.Default.PlayArrow,
-                contentDescription = "Play sentence"
-            )
-            Text(text = "speak")
-        }
+
+        
         
         Row(
             modifier = Modifier
@@ -81,12 +68,26 @@ fun HomeScreen(
                     onClick = { chosenSymbols.deleteLast() },
                     modifier = Modifier
                         .padding(5.dp)
-                        .fillMaxWidth(1f)
-                        .fillMaxHeight(1f)
+                        .height(40.dp)
                 ) {
                     Icon(
                         imageVector = Icons.Default.Delete,
-                        contentDescription = "Toggle drawer"
+                        contentDescription = "Delete last symbol"
+                    )
+                }
+
+                Button(onClick = {
+                    ttsViewModel.onValueChange(chosenSymbols.chosen)
+                    ttsViewModel.textToSpeech(context, ttsRate = ttsRate.value.toFloat())
+                },
+                    enabled = state.isButtonEnabled,
+                    modifier = Modifier
+                        .padding(5.dp)
+                        .height(40.dp)
+                ) {
+                    Icon(
+                        imageVector = Icons.Default.PlayArrow,
+                        contentDescription = "Play sentence"
                     )
                 }
             }
