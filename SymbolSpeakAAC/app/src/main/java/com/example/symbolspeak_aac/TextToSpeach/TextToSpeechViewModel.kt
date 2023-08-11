@@ -20,12 +20,13 @@ class TextToSpeechViewModel : ViewModel() {
         )
     }
 
-    fun textToSpeech(context: Context, ttsRate: Float) {
+    fun textToSpeech(context: Context, ttsRate: Float, text: String) {
         _state.value = state.value.copy(
             isButtonEnabled = false
         )
 
-        val text = transformSymbolsToText()
+        val text1 = transformSymbolsToText()
+        val text2 = text.ifBlank { text1 }
 
         textToSpeech = TextToSpeech(
             context
@@ -35,7 +36,7 @@ class TextToSpeechViewModel : ViewModel() {
                     txtToSpeech.language = Locale.ENGLISH
                     txtToSpeech.setSpeechRate(ttsRate)
                     txtToSpeech.speak(
-                        text,
+                        text2,
                         TextToSpeech.QUEUE_ADD,
                         null,
                         null

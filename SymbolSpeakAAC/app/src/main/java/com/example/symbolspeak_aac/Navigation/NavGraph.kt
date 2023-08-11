@@ -6,12 +6,17 @@ import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import com.example.symbolspeak_aac.HomeScreen
-import com.example.symbolspeak_aac.InfoScreen
-import com.example.symbolspeak_aac.SettingsScreen
+import com.example.symbolspeak_aac.*
+import com.example.symbolspeak_aac.CustomSentences.SentenceEvent
+import com.example.symbolspeak_aac.CustomSentences.SentenceState
 
 @Composable
-fun NavGraph(modifier: Modifier = Modifier, navController: NavHostController) {
+fun NavGraph(
+    modifier: Modifier = Modifier,
+    navController: NavHostController,
+    state: SentenceState,
+    onEvent: (SentenceEvent) -> Unit
+) {
 
     NavHost(
         modifier = modifier,
@@ -23,6 +28,8 @@ fun NavGraph(modifier: Modifier = Modifier, navController: NavHostController) {
         addHomeScreen(this)
 
         addSettingsScreen(this)
+
+        addCustomSentencesScreen(this, state, onEvent)
     }
 }
 
@@ -47,5 +54,15 @@ private fun addSettingsScreen(
 ) {
     navGraphBuilder.composable(route = NavRoute.Settings.path) {
         SettingsScreen()
+    }
+}
+
+private fun addCustomSentencesScreen(
+    navGraphBuilder: NavGraphBuilder,
+    state: SentenceState,
+    onEvent: (SentenceEvent) -> Unit
+) {
+    navGraphBuilder.composable(route = NavRoute.CustomSentences.path) {
+        SentencesScreen(state = state, onEvent = onEvent)
     }
 }

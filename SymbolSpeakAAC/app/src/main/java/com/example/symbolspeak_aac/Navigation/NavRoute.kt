@@ -7,5 +7,7 @@ sealed class NavRoute(val path: String) {
     object Home: NavRoute("home")
 
     object Info: NavRoute("AboutAAC")
+
+    object CustomSentences: NavRoute("CustomSentences")
 }
 

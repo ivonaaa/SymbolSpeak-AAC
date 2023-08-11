@@ -45,7 +45,6 @@ fun HomeScreen(
     Column {
 
         
-        
         Row(
             modifier = Modifier
                 .padding(5.dp)
@@ -78,7 +77,7 @@ fun HomeScreen(
 
                 Button(onClick = {
                     ttsViewModel.onValueChange(chosenSymbols.chosen)
-                    ttsViewModel.textToSpeech(context, ttsRate = ttsRate.value.toFloat())
+                    ttsViewModel.textToSpeech(context, ttsRate = ttsRate.value.toFloat(), text = "")
                 },
                     enabled = state.isButtonEnabled,
                     modifier = Modifier
