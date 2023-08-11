@@ -43,7 +43,7 @@ fun AddSentenceDialog(
         buttons = {
             Box(
                 modifier = Modifier.fillMaxWidth(),
-                contentAlignment = Alignment.CenterEnd
+                contentAlignment = Alignment.Center,
             ) {
                 Button(onClick = {
                     onEvent(SentenceEvent.SaveSentence)
