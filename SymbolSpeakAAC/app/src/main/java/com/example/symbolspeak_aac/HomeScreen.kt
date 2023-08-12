@@ -1,30 +1,34 @@
 package com.example.symbolspeak_aac
 
-import androidx.compose.foundation.background
+import androidx.compose.foundation.BorderStroke
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
-import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.itemsIndexed
-import androidx.compose.material.Button
-import androidx.compose.material.Icon
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material.icons.filled.PlayArrow
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
-import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.compose.ui.unit.sp
+import androidx.compose.ui.window.Popup
 import com.example.symbolspeak_aac.ChosenSymbolsFiles.ChosenSymbolView
 import com.example.symbolspeak_aac.ChosenSymbolsFiles.ChosenSymbols
 import com.example.symbolspeak_aac.Firebase.DataViewModel
+import com.example.symbolspeak_aac.History.History
+import com.example.symbolspeak_aac.History.HistoryScreen
+import com.example.symbolspeak_aac.InfoScreenFiles.WhatIsAACScreen
+import com.example.symbolspeak_aac.InfoScreenFiles.WindowCenterOffsetPositionProvider
 import com.example.symbolspeak_aac.SettingsScreenFiles.UserSettings
 import com.example.symbolspeak_aac.Symbol.SymbolView
 import com.example.symbolspeak_aac.TextToSpeach.TextToSpeechViewModel
@@ -32,6 +36,7 @@ import com.example.symbolspeak_aac.TextToSpeach.TextToSpeechViewModel
 
 @Composable
 fun HomeScreen(
+    history: History,
     dataViewModel: DataViewModel = viewModel(),
     chosenSymbols: ChosenSymbols = ChosenSymbols(),
     ttsViewModel: TextToSpeechViewModel = viewModel()
@@ -42,9 +47,50 @@ fun HomeScreen(
     val ttsRate = store.getTtsRate.collectAsState(initial = 1.0)
     val products = dataViewModel.state.value.data
 
+    var showHistory by remember {
+        mutableStateOf(false)
+    }
     Column {
+        Button(
+            onClick = { showHistory = true },
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(5.dp)
+        ) {
+            Text("Show history", fontSize = 20.sp)
+        }
 
-        
+        if (showHistory) {
+            Popup(
+                popupPositionProvider =
+                WindowCenterOffsetPositionProvider(),
+                onDismissRequest = { showHistory = false },
+            ) {
+                Surface(
+                    modifier = Modifier
+                        .fillMaxSize(1f),
+                    border = BorderStroke(1.dp, MaterialTheme.colors.secondary),
+                    shape = RoundedCornerShape(0.dp),
+                    color = MaterialTheme.colors.background,
+                ) {
+                    Column(
+                        modifier = Modifier.padding(1.dp)
+                    ) {
+                        // Composable content to be shown in the Popup
+                        Row {
+                            TextButton(onClick = { showHistory = false }) {
+                                Icon(
+                                    imageVector = Icons.Default.ArrowBack,
+                                    contentDescription = "Back"
+                                )
+                                Text(text = "Back", fontSize = 20.sp)
+                            }
+                        }
+                        HistoryScreen(history = history)
+                    }
+                }
+            }
+        }
         Row(
             modifier = Modifier
                 .padding(5.dp)
@@ -76,6 +122,7 @@ fun HomeScreen(
                 }
 
                 Button(onClick = {
+                    history.add(chosenSymbols.chosen)
                     ttsViewModel.onValueChange(chosenSymbols.chosen)
                     ttsViewModel.textToSpeech(context, ttsRate = ttsRate.value.toFloat(), text = "")
                 },

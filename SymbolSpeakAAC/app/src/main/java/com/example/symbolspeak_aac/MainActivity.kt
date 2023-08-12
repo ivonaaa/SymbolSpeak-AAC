@@ -11,9 +11,7 @@ import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Info
 import androidx.compose.material.icons.filled.Settings
-import androidx.compose.runtime.collectAsState
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
@@ -21,6 +19,7 @@ import androidx.navigation.compose.rememberNavController
 import androidx.room.Room
 import com.example.symbolspeak_aac.CustomSentences.SentenceDatabase
 import com.example.symbolspeak_aac.CustomSentences.SentenceViewModel
+import com.example.symbolspeak_aac.History.History
 import com.example.symbolspeak_aac.Navigation.*
 import com.example.symbolspeak_aac.ui.theme.SymbolSpeakAACTheme
 import kotlinx.coroutines.launch
@@ -52,6 +51,7 @@ class MainActivity : ComponentActivity() {
                 val scaffoldState = rememberScaffoldState()
                 val scope = rememberCoroutineScope()
                 val navController = rememberNavController()
+                val history by remember { mutableStateOf(History()) }
 
                 val state by viewModel.state.collectAsState()
                 Scaffold (
@@ -126,7 +126,8 @@ class MainActivity : ComponentActivity() {
                             bottom = paddingValues.calculateBottomPadding()),
                         navController = navController,
                         state = state,
-                        onEvent = viewModel::onEvent
+                        onEvent = viewModel::onEvent,
+                        history = history
                     )
                 }
             }

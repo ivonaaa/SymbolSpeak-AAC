@@ -27,23 +27,7 @@ fun SymbolView(
             colors = ButtonDefaults.buttonColors(backgroundColor = Color.White),
             modifier = Modifier.height(100.dp)
         ) {
-            Column(
-                modifier = Modifier.padding(1.dp),
-                verticalArrangement = Arrangement.Center,
-                horizontalAlignment = Alignment.CenterHorizontally
-            ) {
-                Text(
-                    text = product.title
-                )
-                Image(
-                    painter = rememberAsyncImagePainter(product.imageURL),
-                    contentDescription = "product image",
-                    modifier = Modifier
-                        .padding(2.dp)
-                        .size(60.dp)
-                        .fillMaxWidth()
-                )
-            }
+            SymbolLayout(product = product)
         }
     }
 }
@@ -68,5 +52,28 @@ fun colorPicker(type : String): Color {
         "noun" -> Color(230, 16, 16, 255)
         "AquestionWords" -> Color(139, 195, 74, 255)
         else -> Color.Gray
+    }
+}
+
+@Composable
+fun SymbolLayout(
+    product: Symbol
+) {
+    Column(
+        modifier = Modifier.padding(1.dp),
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        Text(
+            text = product.title
+        )
+        Image(
+            painter = rememberAsyncImagePainter(product.imageURL),
+            contentDescription = "product image",
+            modifier = Modifier
+                .padding(2.dp)
+                .size(60.dp)
+                .fillMaxWidth()
+        )
     }
 }
