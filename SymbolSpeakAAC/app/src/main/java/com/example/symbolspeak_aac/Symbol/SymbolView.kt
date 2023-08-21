@@ -15,7 +15,7 @@ import com.example.symbolspeak_aac.ChosenSymbolsFiles.ChosenSymbols
 @Composable
 fun SymbolView(
     product : Symbol,
-    chosenSymbols: ChosenSymbols
+    chosenSymbols: ChosenSymbols,
 ) {
     Card(
         modifier = Modifier

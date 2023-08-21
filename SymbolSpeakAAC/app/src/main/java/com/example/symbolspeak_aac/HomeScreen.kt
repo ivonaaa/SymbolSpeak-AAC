@@ -4,7 +4,6 @@ import androidx.compose.foundation.BorderStroke
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
@@ -27,7 +26,6 @@ import com.example.symbolspeak_aac.ChosenSymbolsFiles.ChosenSymbols
 import com.example.symbolspeak_aac.Firebase.DataViewModel
 import com.example.symbolspeak_aac.History.History
 import com.example.symbolspeak_aac.History.HistoryScreen
-import com.example.symbolspeak_aac.InfoScreenFiles.WhatIsAACScreen
 import com.example.symbolspeak_aac.InfoScreenFiles.WindowCenterOffsetPositionProvider
 import com.example.symbolspeak_aac.SettingsScreenFiles.UserSettings
 import com.example.symbolspeak_aac.Symbol.SymbolView
@@ -50,6 +48,7 @@ fun HomeScreen(
     var showHistory by remember {
         mutableStateOf(false)
     }
+
     Column {
         Button(
             onClick = { showHistory = true },
@@ -122,10 +121,15 @@ fun HomeScreen(
                 }
 
                 Button(onClick = {
-                    history.add(chosenSymbols.chosen)
-                    ttsViewModel.onValueChange(chosenSymbols.chosen)
-                    ttsViewModel.textToSpeech(context, ttsRate = ttsRate.value.toFloat(), text = "")
-                },
+                    if(chosenSymbols.chosen.isNotEmpty()) {
+                        history.add(chosenSymbols.chosen)
+                        ttsViewModel.onValueChange(chosenSymbols.chosen)
+                        ttsViewModel.textToSpeech(
+                            context,
+                            ttsRate = ttsRate.value.toFloat(),
+                            text = ""
+                        )
+                    }},
                     enabled = state.isButtonEnabled,
                     modifier = Modifier
                         .padding(5.dp)

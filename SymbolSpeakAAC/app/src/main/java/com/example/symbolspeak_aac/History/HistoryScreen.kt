@@ -2,10 +2,7 @@ package com.example.symbolspeak_aac.History
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.material.Button
@@ -54,7 +51,8 @@ fun GridSymbolDisplay(
 ) {
     LazyVerticalGrid(
         columns = GridCells.Fixed(3),
-        contentPadding = PaddingValues(2.dp)
+        contentPadding = PaddingValues(2.dp),
+        modifier = Modifier.height(100.dp)
     ) {
         items(symbols.size) {
             Card(

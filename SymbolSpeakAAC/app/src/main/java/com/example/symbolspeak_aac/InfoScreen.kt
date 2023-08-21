@@ -21,7 +21,7 @@ fun InfoScreen(
 ) {
     var isOnWhatIsAAC by remember { mutableStateOf(false) }
     var isOnPeopleWhoUseAAC by remember { mutableStateOf(false) }
-    var isOnTypesOdAAC by remember { mutableStateOf(false) }
+    var isOnTypesOfAAC by remember { mutableStateOf(false) }
 
     Column {
         Column(
@@ -107,15 +107,15 @@ fun InfoScreen(
                 }
             }
 
-            TextButton(onClick = { isOnTypesOdAAC = true }) {
+            TextButton(onClick = { isOnTypesOfAAC = true }) {
                 Text("* Types of AAC", fontSize = 20.sp)
             }
 
-            if (isOnTypesOdAAC) {
+            if (isOnTypesOfAAC) {
                 Popup(
                     popupPositionProvider =
                     WindowCenterOffsetPositionProvider(),
-                    onDismissRequest = { isOnTypesOdAAC = false },
+                    onDismissRequest = { isOnTypesOfAAC = false },
                 ) {
                     Surface(
                         modifier = Modifier
@@ -129,7 +129,7 @@ fun InfoScreen(
                         ) {
                             // Composable content to be shown in the Popup
                             Row {
-                                TextButton(onClick = { isOnTypesOdAAC = false }) {
+                                TextButton(onClick = { isOnTypesOfAAC = false }) {
                                     Icon(
                                         imageVector = Icons.Default.ArrowBack,
                                         contentDescription = "Back"

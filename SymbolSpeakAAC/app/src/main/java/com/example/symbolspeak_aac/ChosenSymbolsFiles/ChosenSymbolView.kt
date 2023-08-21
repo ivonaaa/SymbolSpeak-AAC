@@ -19,7 +19,7 @@ import com.example.symbolspeak_aac.Symbol.Symbol
 fun ChosenSymbolView(
     product : Symbol,
     index: Int,
-    chosenSymbols: ChosenSymbols
+    chosenSymbols: ChosenSymbols,
 ) {
     Card(
         modifier = Modifier
