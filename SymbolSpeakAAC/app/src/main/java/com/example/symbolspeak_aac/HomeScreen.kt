@@ -31,6 +31,7 @@ import com.example.symbolspeak_aac.ChosenSymbolsFiles.ChosenSymbols
 import com.example.symbolspeak_aac.Firebase.DataViewModel
 import com.example.symbolspeak_aac.History.History
 import com.example.symbolspeak_aac.History.HistoryScreen
+import com.example.symbolspeak_aac.HomeScreenFiles.ShowGroup
 import com.example.symbolspeak_aac.InfoScreenFiles.WindowCenterOffsetPositionProvider
 import com.example.symbolspeak_aac.SettingsScreenFiles.UserSettings
 import com.example.symbolspeak_aac.Symbol.Symbol
@@ -51,6 +52,7 @@ fun HomeScreen(
     val store = UserSettings(context)
     val ttsRate = store.getTtsRate.collectAsState(initial = 1.0)
     val products = dataViewModel.state.value.data
+    val fontSize = store.getFontSize.collectAsState(initial = 16)
 
     var showHistory by remember {
         mutableStateOf(false)
@@ -164,7 +166,7 @@ fun HomeScreen(
                 items(gruped.size) {
                     val type = types[it]
                     val symbols = gruped.getValue(type)
-                    ShowGroup(type = type, symbols = symbols, chosenSymbols = chosenSymbols)
+                    ShowGroup(type = type, symbols = symbols, chosenSymbols = chosenSymbols, fontSize = fontSize.value)
                 }
             }
         }
@@ -175,94 +177,5 @@ fun HomeScreen(
                 text = e.message!!
             )
         }
-    }
-}
-
-@Composable
-fun ShowGroup(
-    type: String,
-    symbols: List<Symbol>,
-    chosenSymbols: ChosenSymbols
-) {
-    var show by remember {
-        mutableStateOf(false)
-    }
-
-    Card(
-        modifier = Modifier
-            .padding(3.dp)
-            .fillMaxWidth(),
-        border = BorderStroke(3.dp, color = colorPicker(type = type)),
-    ) {
-        Button(
-            onClick = { show = true },
-            colors = ButtonDefaults.buttonColors(backgroundColor = Color.White),
-            modifier = Modifier.height(100.dp)
-        ) {
-            Grupe(type = type, image = symbols[0].imageURL)
-            if (show) {
-                Popup(
-                    onDismissRequest = { show = false },
-                    alignment = Alignment.TopCenter,
-                    properties = PopupProperties()
-                    ) {
-                    Surface(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .height((LocalConfiguration.current.screenHeightDp-220).dp),
-                        border = BorderStroke(1.dp, MaterialTheme.colors.secondary),
-                        shape = RoundedCornerShape(0.dp),
-                        color = MaterialTheme.colors.background,
-                    ) {
-                        Column(
-                            modifier = Modifier.padding(1.dp)
-                        ) {
-                            // Composable content to be shown in the Popup
-                            Row {
-                                TextButton(onClick = { show = false }) {
-                                    Icon(
-                                        imageVector = Icons.Default.ArrowBack,
-                                        contentDescription = "Back"
-                                    )
-                                    Text(text = "Back", fontSize = 20.sp)
-                                }
-                            }
-                            LazyVerticalGrid(
-                                columns = GridCells.Fixed(3),
-                                contentPadding = PaddingValues(8.dp)
-                            ) {
-                                items(symbols.size) {
-                                    SymbolView(product = symbols[it], chosenSymbols)
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
-}
-
-@Composable
-fun Grupe(
-    type: String,
-    image: String
-) {
-    Column(
-        modifier = Modifier.padding(1.dp),
-        verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.CenterHorizontally
-    ) {
-        Text(
-            text = type
-        )
-        Image(
-            painter = rememberAsyncImagePainter(image),
-            contentDescription = "product image",
-            modifier = Modifier
-                .padding(2.dp)
-                .size(60.dp)
-                .fillMaxWidth()
-        )
     }
 }

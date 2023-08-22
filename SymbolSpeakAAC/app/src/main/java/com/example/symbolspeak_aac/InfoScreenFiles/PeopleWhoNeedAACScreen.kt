@@ -10,6 +10,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
@@ -39,6 +40,7 @@ fun PeopleWhoNeedAACScreen() {
                 .padding(10.dp),
         )
         Text(text = stringResource(id = R.string.definePeopleWhoNeedAAC),
-            fontSize = fontSize.value.sp)
+            fontSize = fontSize.value.sp,
+            textAlign = TextAlign.Justify)
     }
 }

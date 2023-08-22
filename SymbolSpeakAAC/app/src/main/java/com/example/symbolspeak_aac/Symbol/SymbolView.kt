@@ -34,7 +34,7 @@ fun SymbolView(
 
 fun colorPicker(type : String): Color {
     return when (type) {
-        "Ayes/no" -> Color.Cyan
+        "Most used" -> Color.Cyan
         "fruit" -> Color.Green
         "vegetable" -> Color.Yellow
         "math" -> Color.Blue
@@ -42,15 +42,16 @@ fun colorPicker(type : String): Color {
         "people" -> Color.Red
         "device" -> Color.Black
         "animal" -> Color(176, 207, 165, 255)
-        "aPronunce" -> Color(202, 92, 92, 255)
-        "aVerb" -> Color(156, 39, 176, 255)
-        "aPreverb" -> Color(163, 83, 177, 255)
+        "pronounce" -> Color(202, 92, 92, 255)
+        "verbs" -> Color(156, 39, 176, 255)
+        "proverb" -> Color(163, 83, 177, 255)
         "sport" -> Color(255, 152, 0, 255)
         "profession" -> Color(0, 150, 136, 255)
         "adjective" -> Color(207, 193, 140, 255)
         "adverb" -> Color(206, 93, 93, 255)
-        "noun" -> Color(230, 16, 16, 255)
-        "AquestionWords" -> Color(139, 195, 74, 255)
+        "noun" -> Color(198, 255, 0, 255)
+        "Question words" -> Color(139, 195, 74, 255)
+        "event" -> Color(255, 193, 7, 255)
         else -> Color.Gray
     }
 }

@@ -11,6 +11,7 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.symbolspeak_aac.R
@@ -32,7 +33,8 @@ fun WhatIsAACScreen() {
             fontSize = fontSize.value.sp)
 
         Text(text = stringResource(id = R.string.defineAAC),
-            fontSize = fontSize.value.sp)
+            fontSize = fontSize.value.sp,
+            textAlign = TextAlign.Justify)
 
     }
 }
